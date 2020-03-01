@@ -1,7 +1,13 @@
 import { Module } from '@nestjs/common';
-import { InterceptorLogsModule } from './interceptor-logs/interceptor-logs.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { BlogModule } from './blog/blog.module';
 
 @Module({
-  imports: [InterceptorLogsModule],
+  imports: [
+    BlogModule,
+    MongooseModule.forRoot('mongodb://localhost/myapp', {
+      useNewUrlParser: true,
+    }),
+  ],
 })
 export class AppModule {}
