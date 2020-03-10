@@ -12,14 +12,14 @@ export class InterceptorLogsService {
   ) {}
 
   async getLogs(): Promise<InterceptorLog[]> {
-    const logs = await this.logModel.find().exec();
+    const logs = this.logModel.find().exec();
     return logs;
   }
 
   async addLog(
     createInterceptorLogDTO: CreateInterceptorLogDTO,
   ): Promise<InterceptorLog> {
-    const newLog = await new this.logModel(createInterceptorLogDTO);
+    const newLog = new this.logModel(createInterceptorLogDTO);
     return newLog.save();
   }
 }

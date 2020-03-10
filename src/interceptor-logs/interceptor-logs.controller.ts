@@ -15,9 +15,11 @@ export class InterceptorLogsController {
   @Post('/log')
   async addPost(@Res() res, @Body() createPostDTO: CreateInterceptorLogDTO) {
     const newLog = await this.logsService.addLog(createPostDTO);
-    return res.status(HttpStatus.OK).json({
-      message: 'Log has been submitted successfully!',
-      post: newLog,
-    });
+
+    // FIXME: Временно заглушил потому что интерцептор рекурсивно записывает логи
+    // return res.status(HttpStatus.OK).json({
+    //   message: 'Log has been submitted successfully!',
+    //   post: newLog,
+    // });
   }
 }
